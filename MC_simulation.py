@@ -59,10 +59,11 @@ class Mc():
 
 #enter prgrms in the pile (name, size and time in sec)
     def enter(self, n):
+        print('enter prgrms in the file  : ', end='\n\n')
         for i in range(n):
-            name = input('enter name : ')
-            size = int(input('enter size  (MC_size >= size > 0): '))
-            time = int(input('enter time  (> 0): '))
+            name = input('enter name prgm : ')
+            size = int(input('enter size prgrm (MC_size >= size > 0): '))
+            time = int(input('enter time  prgrm (> 0): '))
             self.pile.append({'name': name, 'size': size, 'time': time})
             
 #find space for prgrm in the MC return True else False
@@ -202,13 +203,13 @@ class Mc():
         time.sleep(self.sec)
         
     def choose(self, name):
-        if name == 'FirstFit':
+        if name == 1:
             while self.FirstFit():
                 pass
-        elif name == 'BestFit':
+        elif name == 2:
             while self.BestFit():
                 pass
-        elif name == 'WorstFit':
+        elif name == 3:
             while self.WorstFit():
                 pass
 
@@ -221,6 +222,8 @@ class Mc():
             
 
 # the main func for the gui 
+#whene u run the prgrm u must enter size and number of prgrms with (name, size nad time )
+#befoer the gui MC run
 def main():    
     pygame.init()
     
@@ -229,15 +232,12 @@ def main():
     pygame.display.set_caption('MC game')
     fontObj = pygame.font.Font('freesansbold.ttf', 32)
     
-    #disp back round color
-    DISPLAYSURF.fill(BGCOLOR)
-    
     #enter size of MC
-    size = int(input('enter size of MC : ))
+    size = int(input('enter size of MC (mg): '))
     #neter numb of prgrms that will be run
     n = int(input('enter number of prgrms : '))
     # choose type of algo to be run in dynamique MC
-    typ = input('engter FisrtFit , BestFit or WorstFit')
+    typ = int(input('enter number (1: "FisrtFit" , 2: "BestFit" or 3: "WorstFit"): '))
     #create instince of the MC classe
     mc = Mc(size)
     #call enter method to fill the pile woth detailes of prgrms to be run in 
